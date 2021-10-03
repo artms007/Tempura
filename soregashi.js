@@ -80,6 +80,25 @@ requestTable["initialize"] = (msg) => {
     // TODO: implement
 }
 
+// ------------------------------- 初期化 -------------------------------
+function compile(uri, src) {
+    logMessage(uri + ":" + src);
+    // TODO: implement
+}
+
+notificationTable["textDocument/didOpen"] = (msg) => {
+    const uri = msg.params.textDocument.uri;
+    const text = msg.params.textDocument.text;
+    compile(uri, text);
+}
+
+notificationTable["textDocument/didChange"] = (msg) => {
+    if (msg.params.contentChanges.length !== 0) {
+        const uri = msg.params.textDocument.uri;
+        const text = msg.params.contentChanges[msg.params.contentChanges.length - 1].text;
+        compile(uri, text);
+    }
+}
 
 function dispatch(msg) {
     if ("id" in msg && "method" in msg) { // request
