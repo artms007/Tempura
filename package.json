@@ -1,0 +1,30 @@
+
+{
+    "name": "soregashi-mode",
+    "version": "0.0.1",
+    "author": "s-takano",
+    "license": "UNLICENSED",
+    "description": "A tiny programming language that supports Language Server Protocol, just a prototype",
+  
+    "engines": {
+      "vscode": "^1.60.2"
+    },
+    "main": "./extension.js",
+    "activationEvents": [
+      "onLanguage:soregashi"
+    ],
+    "contributes": {
+      "languages": [
+        {
+          "id": "soregashi",
+          "extensions": [
+            ".sore"
+          ]
+        }
+      ]
+    },
+    "dependencies": {
+      "vscode-languageclient": "^7.0.0"
+    },
+    "private": true
+  }
